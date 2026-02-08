@@ -1,0 +1,104 @@
+<html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <title>MWUNA STORY </title>
+</head>
+
+<body>
+  <div class="container"> 
+     <header>
+       <div class="brand">
+        <img src="logo.png" alt="logo mwuna">
+
+        <div class="menu-container"> 
+          <button id="MenuBtn" class="menu-btn">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </button>
+        <div id="menulogo" class="menu-panel">
+           <div class="app-grid"> 
+
+            <div class="app-item">
+              <a href="index.html">
+                <img src="logo.png" alt="lire">
+                <span>MWUNA STORY</span>
+              </a>
+            </div>
+            <div class="app-item">
+              <a href="contact.html">
+                <img src="contact.png" alt="contact">
+                <span>CONTACT </span>
+             </a>
+            </div>
+      
+           </div>
+        </div>
+     </div>
+   </header>
+  </div>
+  <section>
+    <div id="pourquoi" class="why-section">
+      <div class="why-content">
+        <div class="why-text">
+          <h2>MWUNA STORY</h2>
+          <p> Ce site a été créé pour préserver,partager et faire découvrir
+              la richesse des contes africains racontes par nos grand-parents.  
+             <br> À travers ces histoires transmises oralement de génération en génération,  
+              nous célébrons la sagesse, les valeurs et la magie de la culture africaine.<br>
+              <h2>En mémoire de Malacoco</h2>
+         </p>
+       </div>
+       <div class="why-image">
+        <img src="mama.png" alt="Contes africains" />
+       </div>
+     </div>
+   </div>
+  </section>
+  <section>
+    <div id="contact" class="contact-section">
+      <h2>contactez-nous </h2>
+      <div class="contact-card">
+        <a href="mailto:@mail.com" class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <span>indisponible</span>
+        </a>
+        <a href="" target="_blank" class="contact-item">
+          <i class="fab fa-instagram"></i>
+          <span>indisponible </span>
+        </a>
+        <a href="" target="_blank" class="contact-item">
+          <i class="fab fa-facebook"></i>
+          <span>indisponible </span>
+        </a>
+      </div>
+   </div>
+  <footer>© 2025 mwuna story  — Tous droits réservés.</footer>
+  </section>
+  <script>
+  const menuBtn = document.getElementById('MenuBtn');
+  const menuPanel = document.getElementById('menulogo');
+
+ menuBtn.addEventListener('click', () => {
+  // bascule l'affichage
+  if (menuPanel.style.display === 'block') {
+    menuPanel.style.display = 'none';
+  } else {
+    menuPanel.style.display = 'block';
+  }
+ });
+
+ // fermer le menu si on clique à l'extérieur
+  document.addEventListener('click', (e) => {
+  if (!menuBtn.contains(e.target) && !menuPanel.contains(e.target)) {
+    menuPanel.style.display = 'none';
+  }
+ });
+
+ </script> 
+</body>
+</html>

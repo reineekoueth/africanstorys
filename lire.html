@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MWUNA STORY</title>
+</head>
+
+<body>
+  <div class="container"> 
+     <header>
+       <div class="brand">
+        <img src="logo.png" alt="logo mwuna">
+
+        <div class="menu-container"> 
+          <button id="MenuBtn" class="menu-btn">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </button>
+        <div id="menulogo" class="menu-panel">
+           <div class="app-grid"> 
+
+            <div class="app-item">
+              <a href="index.html">
+                <img src="logo.png" alt="lire">
+                <span>MWUNA STORY</span>
+              </a>
+            </div>
+            <div class="app-item">
+              <a href="contact.html">
+                <img src="contact.png" alt="contact">
+                <span>CONTACT </span>
+             </a>
+            </div>
+      
+           </div>
+        </div>
+     </div>
+   </header>
+  </div>
+ <section>
+    <div class="title-lire">
+        <h1> Lire une histoire </h1>
+    </div>
+    <div class="lire-container">
+
+        <div class="story-lire">
+            <img src="mars.png" alt="history4">
+            <h2>4 MARS 2012</h2>
+            <a class="btn-lire" href="mars.html">Lire</a>
+        </div>
+
+        <div class="story-lire">
+            <img src="harcele.jpg" alt="history">
+            <h2>Être harcelé sans en avoir conscience</h2>
+            <a class="btn-lire" href="harcele.html">Lire</a>
+        </div>
+         <div class="story-lire">
+            <img src="wata.jpg" alt="history4">
+            <h2>MAMI WATA </h2>
+            <a class="btn-lire" href="mamiwata.html">lire</a>
+        </div>
+
+        <div class="story-lire">
+            <img src="leroidelasape.jpg" alt="history">
+            <h2>Les sapeurs du Congo</h2>
+            <a class="btn-lire" href="leroidelasape.html">lire</a>
+        </div>
+          <div class="story-lire">
+            <img src="lesamazones.png" alt="history">
+            <h2>Les Amazones du Dahomey</h2>
+            <a class="btn-lire" href="">indisponible</a>
+         </div>
+          <div class="story-lire">
+            <img src="mama.png" alt="history">
+            <h2>MALACOCO</h2>
+            <a class="btn-lire" href="">indisponible</a>
+         </div>
+    </div>
+ </section>
+ </div>
+ <footer> © 2025 mwuna story  — Tous droits réservés.</footer>
+ <script>
+ const menuBtn = document.getElementById('MenuBtn');
+ const menuPanel = document.getElementById('menulogo');
+
+ menuBtn.addEventListener('click', () => {
+ menuPanel.style.display = menuPanel.style.display === 'block' ? 'none' : 'block';
+ });
+
+ document.addEventListener('click', (e) => {
+  if (!menuBtn.contains(e.target) && !menuPanel.contains(e.target)) {
+    menuPanel.style.display = 'none';
+  }
+ });
+ </script>
+</body>
+</html>

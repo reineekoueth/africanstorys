@@ -1,0 +1,156 @@
+<html>
+<html lang="fr">
+<head>
+  <link rel="stylesheet" href="style.css">
+  <title>HISTOIRE </title>
+</head>
+<body>
+ <div class="container"> 
+     <header>
+       <div class="brand">
+        <img src="logo.png" alt="logo mwuna">
+
+        <div class="menu-container"> 
+  <button id="MenuBtn" class="menu-btn">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </button>
+
+  <div id="menulogo" class="menu-panel">
+    <div class="app-grid"> 
+      
+     <div class="app-item">
+        <a href="lire.html">
+          <img src="lire-logo.png" alt="">
+          <span>LIRE HISTOIRE</span>
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</div>
+</div>
+     </header>
+  <div class="histoire-container">
+        <div class="histoire">
+            <img src="freecongo.jpg" alt="history1">
+            <div class="histoire-text">
+                <h2></h2>
+                <p>  
+                   
+                  
+                </p>
+                
+            </div>
+        </div>
+
+<!-- Section Commentaires -->
+<!--div class="comments">
+    <h1>Laisse un commentaire</h1>
+
+    <form id="commentForm">
+        <input type="text" id="name" name="Votre nom" placeholder="Votre nom" required>
+        <textarea id="comment" name="Votre commentaire" placeholder="Votre commentaire" required></textarea>
+        <button type="submit">Envoyer</button>
+    </form>
+
+    <div id="commentsList"></div>
+</div>
+ <div id="commentsList">
+        <Les commentaires soumis apparaîtront ici >
+    </div-->
+
+<script>
+ const menuBtn = document.getElementById('MenuBtn');
+const menuPanel = document.getElementById('menulogo');
+
+menuBtn.addEventListener('click', () => {
+  // bascule l'affichage
+  if (menuPanel.style.display === 'block') {
+    menuPanel.style.display = 'none';
+  } else {
+    menuPanel.style.display = 'block';
+  }
+});
+
+// fermer le menu si on clique à l'extérieur
+document.addEventListener('click', (e) => {
+  if (!menuBtn.contains(e.target) && !menuPanel.contains(e.target)) {
+    menuPanel.style.display = 'none';
+  }
+});
+
+const form = document.getElementById('commentForm');
+const commentsList = document.getElementById('commentsList');
+
+// Formater date/heure
+function formatDateTime() {
+    const now = new Date();
+    return now.toLocaleString('fr-FR', {
+        year: 'numeric', month: '2-digit', day: '2-digit',
+        hour: '2-digit', minute: '2-digit'
+    });
+}
+
+// Charger les commentaires depuis localStorage
+function loadComments() {
+    const comments = JSON.parse(localStorage.getItem('comments')) || [];
+    commentsList.innerHTML = '';
+    comments.forEach(c => {
+        const commentItem = document.createElement('div');
+        commentItem.classList.add('comment-item');
+        commentItem.innerHTML = `<strong>${c.name}</strong>
+                                 <div class="comment-date">${c.date}</div>
+                                 <p>${c.text}</p>`;
+        commentsList.appendChild(commentItem);
+    });
+}
+
+// Ajouter un commentaire
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const comment = document.getElementById('comment').value;
+    const date = formatDateTime();
+
+    const comments = JSON.parse(localStorage.getItem('comments')) || [];
+    comments.unshift({ name, text: comment, date });
+    localStorage.setItem('comments', JSON.stringify(comments));
+
+    loadComments();
+    form.reset();
+});
+
+/*$localStorage.removeItem('comments'); // supprime uniquement les commentaires
+loadComments(); // met à jour l'affichage*/
+
+function loadComments() {
+    const comments = JSON.parse(localStorage.getItem('comments')) || [];
+    commentsList.innerHTML = '';
+    comments.forEach((c, index) => {
+        const commentItem = document.createElement('div');
+        commentItem.classList.add('comment-item');
+        commentItem.innerHTML = `
+            <strong>${c.name}</strong>
+            <div class="comment-date">${c.date}</div>
+            <p>${c.text}</p>
+            <button onclick="deleteComment(${index})">Supprimer</button>
+        `;
+        commentsList.appendChild(commentItem);
+    });
+}
+
+// supprimer un commentaire 
+function deleteComment(index) {
+    let comments = JSON.parse(localStorage.getItem('comments')) || [];
+    comments.splice(index, 1);
+    localStorage.setItem('comments', JSON.stringify(comments));
+    loadComments();
+}
+
+// Charger les commentaires au chargement de la page
+window.addEventListener('load', loadComments);
+</script>
+</body>
+</html>

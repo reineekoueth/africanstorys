@@ -1,0 +1,119 @@
+<html>
+<html lang="fr">
+<head>
+  <link rel="stylesheet" href="style.css">
+  <title>HISTOIRE </title>
+</head>
+<body>
+  <div class="container"> 
+     <header>
+       <div class="brand">
+        <img src="logo.png" alt="logo mwuna">
+
+        <div class="menu-container"> 
+          <button id="MenuBtn" class="menu-btn">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </button>
+        <div id="menulogo" class="menu-panel">
+           <div class="app-grid"> 
+
+            <div class="app-item">
+              <a href="lire.html">
+                <img src="lire-logo.png" alt="lire">
+                <span>LIRE MWUNA </span>
+              </a>
+            </div>
+            <div class="app-item">
+              <a href="contact.html">
+                <img src="contact.png" alt="contact">
+                <span>CONTACT </span>
+             </a>
+            </div>
+      
+           </div>
+        </div>
+     </div>
+   </header>
+ </div>
+ <section>
+   <div class="histoire-container">
+    <div class="histoire" data-id="histoire3">
+      <img src="mars.png" alt="mars">
+      <div class="histoire-text">
+        <h2>4 MARS 2012 </h2>
+        <p>Je me souviens parfaitement du 4 mars 2012. Ce matin-là, à Brazzaville, tout semblait normal.Le soleil se levait doucement et la ville commençait à s’animer. Je me trouvais dans mon quartier,
+          j’allais chez le boutiquier pour acheter des œufs comme tous les dimanches. Rien ne laissait présager ce qui allait se passer.Soudain, un fracas terrible a secoué la ville. La première explosion 
+          m’a fait perdre l’équilibre, et le sol a tremblé sous mes pieds comme si la terre elle-même voulait s’ouvrir.
+          Puis ce fut une série d’explosions, de plus en plus violentes. Je voyais des débris voler dans tous les sens, des vitres éclater, et la fumée noire envahir l’air.
+          Je courais, paniqué, essayant de suivre le cri de ma mère qui m’appelait : « Yva ! Yvaaaeh ! ».Les cris, les pleurs… tout se mélangeait dans un chaos absolu. Je voyais des personnes blessées, certaines couvertes de sang, et d’autres piégées sous les décombres.
+          En fuyant les flammes et les explosions, je voyais des maisons complètement détruites, des rues transformées en ruines. Le bruit des explosions résonnait encore longtemps dans mes oreilles. 
+          Je n’oublierai jamais cette peur intense, cette sensation que tout pouvait s’effondrer à tout moment.
+          Après quelques heures, l’urgence s’est transformée en consternation. Le bilan humain était déjà lourd : des centaines de morts et de blessés, des familles complètement dévastées. Ce jour-là,à mon jeune âge, j’ai compris à quel point la sécurité et la vie peuvent être fragiles, surtout lorsque des dangers comme un dépôt de munitions se trouvent au cœur de notre ville.
+          Même aujourd’hui, chaque 4 mars, je repense à ce jour. Je repense aux gens que j’ai vus courir, crier, pleurer… aux vies perdues, aux bâtiments détruits. Mais je me rappelle aussi la solidarité : des voisins qui s’entraidaient, 
+          des inconnus qui portaient des blessés, des mains tendues dans la panique. Et oui, j’ai perdu un oncle ce jour-là. C’est ce mélange d’horreur et d’humanité qui reste gravé en moi pour toujours.
+       </p>
+      </div>
+      <div class="like-section">
+        <span class="like-icon">♡</span>
+        <span class="like-count">0</span>
+      </div>
+    </div>
+  </div>
+ </section>
+ <footer> © 2025 mwuna story  — Tous droits réservés.</footer>
+ <script>
+ const menuBtn = document.getElementById('MenuBtn');
+ const menuPanel = document.getElementById('menulogo');
+
+ menuBtn.addEventListener('click', () => {
+  menuPanel.style.display = menuPanel.style.display === 'block' ? 'none' : 'block';
+ });
+
+ document.addEventListener('click', (e) => {
+  if (!menuBtn.contains(e.target) && !menuPanel.contains(e.target)) {
+    menuPanel.style.display = 'none';
+  }
+ });
+
+ document.querySelectorAll('.histoire').forEach(histoire => {
+  const id = histoire.dataset.id;
+  const icon = histoire.querySelector('.like-icon');
+  const count = histoire.querySelector('.like-count');
+
+  if (!id || !icon || !count) return;
+
+  const likeKey = `likes_${id}`;
+  const stateKey = `liked_${id}`;
+
+  // Charger les données
+  let likes = parseInt(localStorage.getItem(likeKey)) || 0;
+  let liked = localStorage.getItem(stateKey) === 'true';
+
+  // Affichage inicial
+  count.textContent = likes;
+  icon.textContent = liked ? '❤️' : '♡';
+
+  // Clic sur le cœur
+  icon.addEventListener('click', () => {
+    if (liked) {
+      likes = Math.max(0, likes - 1);
+      icon.textContent = '♡';
+      liked = false;
+    } else {
+      likes++;
+      icon.textContent = '❤️';
+      liked = true;
+    }
+
+    // Mise à jour de l'affichage + stockage
+    count.textContent = likes;
+    localStorage.setItem(likeKey, likes);
+    localStorage.setItem(stateKey, liked);
+  });
+ });
+
+ </script>
+</body>
+</html> 

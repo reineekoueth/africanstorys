@@ -1,0 +1,147 @@
+<html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>MWUNA STORY </title>
+</head>
+
+<body>
+ <div class="container"> 
+     <header>
+       <div class="brand">
+        <img src="logo.png" alt="logo mwuna">
+
+        <div class="menu-container"> 
+          <button id="MenuBtn" class="menu-btn">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </button>
+        <div id="menulogo" class="menu-panel">
+           <div class="app-grid"> 
+
+            <div class="app-item">
+              <a href="lire.html">
+                <img src="lire-logo.png" alt="lire">
+                <span>LIRE MWUNA </span>
+              </a>
+            </div>
+            <div class="app-item">
+              <a href="contact.html">
+                <img src="contact.png" alt="contact">
+                <span>CONTACT </span>
+             </a>
+            </div>
+      
+           </div>
+        </div>
+     </div>
+   </header>
+ </div>
+
+  <main>
+    <section>
+      <div class="title">
+        <div>
+          <h1>KARIBU KWENYE MWUNA HISTOIRE</h1>
+          <P>Explore nos histoires africaines illustrées et faciles à lire.</P>
+        </div>
+      </div>
+    </section>
+    <!--colonnce histoire -->
+    <section>
+      <div class="card">
+        <h2>Nos Histoires récentes</h2>
+      </div>
+      <div id="voir-histoire" class="stories" aria-live="polite">
+        <article class="story">
+          <img src="mars.png" />
+          <div class="meta">
+            <h3>4 MARS 2012</h3>
+            <p>Cette histoire raconte le souvenir traumatisant d’un enfant témoin des explosions du 4 mars 2012 à Brazzaville.
+               Entre panique, destructions et pertes humaines, il découvre la fragilité de la vie.
+               Malgré l’horreur, il retient aussi la solidarité et l’humanité qui ont émergé au cœur du chaos.
+            </p>
+            <a class="btn" href="mars.html" >Lire</a>
+          </div>
+        </article>
+        <article class="story">
+          <img src="harcele.jpg" />
+          <div class="meta">
+            <h3>Être harcelé sans en avoir conscience </h3>
+            <p>Cette histoire raconte le parcours de Malia,une fille calme et discrète qui,
+               après avoir déménagé, tente de s’intégrer dans son nouveau collège.Peu à peu,
+               ses camarades commencent à se moquer d’elle, à l’humilier et à l’accuser à tort, 
+               transformant ce qui semblait être un jeu en véritable harcèlement.
+          </p>
+          <a class="btn" href="harcele.html" >Lire</a>
+          </div>
+        </article>
+        <article class="story">
+          <img src="wata.jpg" />
+          <div class="meta">
+            <h3>MAMI WATA</h3>
+            <p>Nzaba, jeune pêcheur du fleuve Congo, reçoit l’aide magique de Mami Wata grâce à une perle qui remplit ses filets de poissons.
+              Mais en brisant le pacte de silence pour expliquer sa fortune, il trahit la confiance de l’esprit de l’eau.
+              Comme punition, il disparaît dans le fleuve et devient à jamais gardien de Mami Wata.</p>
+            <a class="btn" href="mamiwata.html" >lire</a>
+          </div>
+        </article>
+        <article class="story">
+          <img src="leroidelasape.jpg" />
+          <div class="meta">
+            <h3>LE ROI DE LA SAPE </h3>
+            <p>Makosso, jeune passionné de mode à Brazzaville, reçoit d’un vieillard un costume magique qui le fait devenir le Roi du Sape.
+              Mais l’orgueil lui fait perdre la magie de sa tenue sous les yeux de la foule.
+              En retrouvant humilité et respect, il comprend que la vraie élégance vient du cœur, non des vêtements.</p>
+            <a class="btn" href="leroidelasape.html" >lire</a>
+          </div>
+        </article>
+        <article class="story">
+          <img src="lesamazones.png" />
+          <div class="meta">
+            <h3>Les Amazones du Dahomey</h3>
+            <p></p>
+            <a class="btn" href="" >indispanible</a>
+          </div>
+        </article>
+         <article class="story">
+          <img src="mama.png" />
+          <div class="meta">
+            <h3>MALACOCO</h3>
+            <p></p>
+            <a class="btn" href="" >indispanible</a>
+          </div>
+        </article>
+
+      </div>
+
+    </section>
+  </main>
+  <footer>© 2025 mwuna story  — Tous droits réservés.</footer>
+ <script>
+ const menuBtn = document.getElementById('MenuBtn');
+ const menuPanel = document.getElementById('menulogo');
+
+ menuBtn.addEventListener('click', () => {
+  // bascule l'affichage
+  if (menuPanel.style.display === 'block') {
+    menuPanel.style.display = 'none';
+  } else {
+    menuPanel.style.display = 'block';
+  }
+ });
+
+ // fermer le menu si on clique à l'extérieur
+ document.addEventListener('click', (e) => {
+  if (!menuBtn.contains(e.target) && !menuPanel.contains(e.target)) {
+    menuPanel.style.display = 'none';
+  }
+ });
+
+ </script> 
+</body>
+</html>

@@ -1,0 +1,141 @@
+<html>
+<html lang="fr">
+<head>
+  <link rel="stylesheet" href="style.css">
+  <title>HISTOIRE </title>
+</head>
+<body>
+    <div class="container"> 
+     <header>
+       <div class="brand">
+        <img src="logo.png" alt="logo mwuna">
+
+        <div class="menu-container"> 
+          <button id="MenuBtn" class="menu-btn">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </button>
+        <div id="menulogo" class="menu-panel">
+           <div class="app-grid"> 
+
+            <div class="app-item">
+              <a href="index.html">
+                <img src="logo.png" alt="lire">
+                <span>MWUNA STORY</span>
+              </a>
+            </div>
+            <div class="app-item">
+              <a href="contact.html">
+                <img src="contact.png" alt="contact">
+                <span>CONTACT </span>
+             </a>
+            </div>
+      
+           </div>
+        </div>
+     </div>
+   </header>
+    </div>
+    <section>
+      <div class="histoire-container">
+
+        <div class="histoire" data-id="histoire1">
+          <img src="wata.jpg" alt="history1">
+          <div class="histoire-text">
+            <h2>Mami Wata  </h2>
+            <p>Dans un petit village au bord du fleuve Congo vivait un jeune pêcheur nommé Nzaba .
+              Chaque matin, il lançait ses filets avant le lever du soleil, mais depuis des semaines, le fleuve refusait de lui offrir le moindre poisson. 
+              La pauvreté le menaçait, et il craignait de ne plus pouvoir nourrir sa mère malade.Un soir, désespéré, Nzaba  se rendit au bord du fleuve sous la pleine lune.
+              Les eaux étaient tellement calmes qu’on aurait dit un miroir. Alors qu’il s’apprêtait à pleurer, une brise légère souleva les vagues et une silhouette surgit.
+              C’était une femme d’une beauté irréelle :
+              ses yeux brillaient comme des étoiles,
+              ses cheveux flottaient comme des algues lumineuses,
+              et une longue queue argentée scintillait sous l’eau.
+              — Nzaba , dit-elle sans qu’il ne l’eût jamais nommée, je connais ta peine.
+              Il comprit aussitôt qu’il se trouvait devant Mami Wata.
+              Elle lui tendit une perle bleue :
+              — Prends-la. Demain, ton filet sera rempli. Mais en échange, tu viendras me rendre visite chaque pleine lune et tu ne révéleras jamais que tu m’as vue.
+              Nzaba accepta.
+              Le lendemain, ses filets débordaient tellement de poissons que le village entier accourut pour l’aider. La fortune revint, les malheurs s’envolèrent, et sa mère guérit.
+              Les mois passèrent. À chaque pleine lune, Nzaba retournait au fleuve, et Mami Wata lui parlait des mystères de l’eau. Peu à peu, il tomba amoureux d’elle.
+              Un jour, un marchand jaloux lui demanda :
+              — D’où vient toute ta richesse ?
+              Et sous la pression, Lomami finit par avouer son secret.
+              La nuit suivante, il retourna au fleuve. Mami Wata l’attendait, mais son regard n’était plus doux.
+              — Tu as rompu le pacte, Lomami. Tu as choisi la parole des hommes plutôt que la confiance des esprits.
+              Une grande vague s’éleva.
+              Nzaba disparut sous l’eau.
+              On raconte que depuis, lorsque les nuits sont calmes, on peut entendre sa voix chanter sous la surface.
+              Et que dans les profondeurs du fleuve, Nzaba  est devenu l’un des gardiens de Mami Wata, condamné à veiller sur elle pour l’éternité.
+           </p>
+         </div>
+         <div class="like-section">
+              <span class="like-icon">♡</span>
+              <span class="like-count">0</span>
+        </div>
+      </div>
+      </div>
+   </div>
+    </section> 
+
+  <script>
+  const menuBtn = document.getElementById('MenuBtn');
+  const menuPanel = document.getElementById('menulogo');
+
+ menuBtn.addEventListener('click', () => {
+  // bascule l'affichage
+  if (menuPanel.style.display === 'block') {
+    menuPanel.style.display = 'none';
+  } else {
+    menuPanel.style.display = 'block';
+  } 
+ });
+
+ // fermer le menu si on clique à l'extérieur
+ document.addEventListener('click', (e) => {
+  if (!menuBtn.contains(e.target) && !menuPanel.contains(e.target)) {
+    menuPanel.style.display = 'none';
+  }
+ });
+
+ document.querySelectorAll('.histoire').forEach(histoire => {
+  const id = histoire.dataset.id;
+  const icon = histoire.querySelector('.like-icon');
+  const count = histoire.querySelector('.like-count');
+
+  if (!id || !icon || !count) return;
+
+  const likeKey = `likes_${id}`;
+  const stateKey = `liked_${id}`;
+
+  // Charger les données
+  let likes = parseInt(localStorage.getItem(likeKey)) || 0;
+  let liked = localStorage.getItem(stateKey) === 'true';
+
+  // Affichage inicial
+  count.textContent = likes;
+  icon.textContent = liked ? '❤️' : '♡';
+
+  // Clic sur le cœur
+  icon.addEventListener('click', () => {
+    if (liked) {
+      likes = Math.max(0, likes - 1);
+      icon.textContent = '♡';
+      liked = false;
+    } else {
+      likes++;
+      icon.textContent = '❤️';
+      liked = true;
+    }
+
+    // Mise à jour de l'affichage + stockage
+    count.textContent = likes;
+    localStorage.setItem(likeKey, likes);
+    localStorage.setItem(stateKey, liked);
+  });
+ });
+
+ </script>
+</body>
+</html>

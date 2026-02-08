@@ -1,0 +1,140 @@
+<html>
+<html lang="fr">
+<head>
+  <link rel="stylesheet" href="style.css">
+  <title>HISTOIRE </title>
+</head>
+<body>
+ <div class="container"> 
+     <header>
+       <div class="brand">
+        <img src="logo.png" alt="logo mwuna">
+
+        <div class="menu-container"> 
+  <button id="MenuBtn" class="menu-btn">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </button>
+
+  <div id="menulogo" class="menu-panel">
+    <div class="app-grid"> 
+      
+     <div class="app-item">
+        <a href="lire.html">
+          <img src="lire-logo.png" alt="">
+          <span>LIRE HISTOIRE</span>
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</div>
+</div>
+     </header>
+  <div class="histoire-container">
+        <div class="histoire">
+            <img src="leroidelasape.jpg" alt="history1">
+            <div class="histoire-text">
+                <h2>le roi de la sape  </h2>
+                <p>À Brazzaville vivait un jeune homme nommé Makosso, passionné par la mode depuis son enfance. Sa mère disait toujours :
+                  — Tu es né pour briller, mon fils, mais souviens-toi qu’un vrai sapeur brille d’abord par son cœur.
+                  Makosso rêvait de devenir le sapeur le plus élégant du Congo, celui dont on parlerait dans tous les quartiers de Bacongo et de Poto-Poto.Mais il n’avait qu’un vieux costume hérité de son oncle.
+                  <br>Un jour, en se promenant au marché Total, il rencontra un vieil homme habillé avec une classe incroyable : veste bleu nuit, chaussures en cuir rouge, canne argentée.</br>
+                  — Je vois l’ambition dans tes yeux, dit le vieillard. Tu veux être un grand sapeur, n’est-ce pas ?
+                 <br> Makosso acquiesça.<br>
+                  Le vieux lui donna une boîte noire :
+                  <br>— Voici un costume magique. Porte-le demain lors du défilé de la SAPE.Mais fais attention : la magie ne fonctionne que si ton cœur est pur.</br>
+                  Makosso rentra chez lui, impatient.
+                  À l’intérieur,il trouva une tenue splendide :une veste blanche lumineuse,un pantalon vert forêt,des chaussures dorées.
+                  <br>Le lendemain, il se présenta au concours.</br>
+                  Dès qu’il entra sur le podium, la tenue scintilla, changeant de couleurs selon ses pas. La foule était en délire.
+                  Il devint instantanément le Roi du Sape.
+                  <br>Mais au moment de recevoir son trophée, un autre sapeur — jaloux — glissa :</br>
+                  — Il n’a rien fait. Il a juste un costume magique !
+                  
+                  <br>Makosso aurait pu ignorer la provocation.</br>
+                  Mais il répondit avec arrogance :
+                  — Vous êtes tous jaloux de moi ! Je suis le plus grand, costume ou pas !
+                 <br> À cet instant, le costume perdit sa magie.</br>
+                 <br>Les couleurs s’éteignirent.</br>
+                 <br>Les chaussures ternirent.</br>
+                 <br> La foule se tut.</br>
+                 Le vieux homme apparut soudain parmi les spectateurs.
+                 — Makosso, tu as oublié : un sapeur n’est pas seulement ce qu’il porte, mais ce qu’il est.
+                 Le jeune homme baissa la tête.
+                 Il comprit que l’élégance véritable vient de la dignité, du respect, de la paix qu’on porte en soi.
+                 Il rendit la boîte noire au vieillard et retourna chez lui.
+                 <br>Le lendemain, il ressortit le vieux costume de son oncle, le nettoya, le repassa, et marcha dans les rues de Brazzaville avec une assurance nouvelle.</br>
+                 Et là, la magie revint — non pas sur ses vêtements, mais dans les regards :tout le monde voyait en lui un vrai sapeur,un homme élégant par son âme.
+                 <br> Depuis ce jour, Makosso est connu comme le sapeur au grand cœur, celui qui a compris que la SAPE est avant tout une philosophie :
+                 Société des Ambianceurs et des Personnes Élégantes — en esprit, en gestes et en respect.</br></p>
+            </div>
+       </div>
+  </div>
+ </div>
+ <div class="histoire" data-id="1">
+  <span class="like-icon">♡</span>
+  <span class="like-count">0</span>
+ </div>
+
+<script>
+ const menuBtn = document.getElementById('MenuBtn');
+const menuPanel = document.getElementById('menulogo');
+
+menuBtn.addEventListener('click', () => {
+  // bascule l'affichage
+  if (menuPanel.style.display === 'block') {
+    menuPanel.style.display = 'none';
+  } else {
+    menuPanel.style.display = 'block';
+  }
+});
+
+// fermer le menu si on clique à l'extérieur
+document.addEventListener('click', (e) => {
+  if (!menuBtn.contains(e.target) && !menuPanel.contains(e.target)) {
+    menuPanel.style.display = 'none';
+  }
+});
+
+document.querySelectorAll('.histoire').forEach(histoire => {
+  const id = histoire.dataset.id;
+  const icon = histoire.querySelector('.like-icon');
+  const count = histoire.querySelector('.like-count');
+
+  if (!id || !icon || !count) return;
+
+  const likeKey = `likes_${id}`;
+  const stateKey = `liked_${id}`;
+
+  // Charger les données
+  let likes = parseInt(localStorage.getItem(likeKey)) || 0;
+  let liked = localStorage.getItem(stateKey) === 'true';
+
+  // Affichage inicial
+  count.textContent = likes;
+  icon.textContent = liked ? '❤️' : '♡';
+
+  // Clic sur le cœur
+  icon.addEventListener('click', () => {
+    if (liked) {
+      likes = Math.max(0, likes - 1);
+      icon.textContent = '♡';
+      liked = false;
+    } else {
+      likes++;
+      icon.textContent = '❤️';
+      liked = true;
+    }
+
+    // Mise à jour de l'affichage + stockage
+    count.textContent = likes;
+    localStorage.setItem(likeKey, likes);
+    localStorage.setItem(stateKey, liked);
+  });
+});
+
+</script>
+</body>
+</html>
